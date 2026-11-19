@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Classroom Browser — Teacher Dashboard</title>
+<link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+
+<div class="pin-overlay" id="pinOverlay">
+  <div class="pin-box">
+    <h2>🔐 Enter Teacher PIN</h2>
+    <input id="pinInput" type="password" inputmode="numeric" autocomplete="off" maxlength="12" placeholder="PIN" />
+    <div id="pinMsg" class="pin-msg"></div>
+    <div class="pin-row">
+      <button class="btn btn-secondary" onclick="cancelPin()">Cancel</button>
+      <button class="btn btn-primary" id="unlockBtn">Unlock</button>
+    </div>
+  </div>
+</div>
+
+<main class="container" id="main" style="display:none">
+  <div class="page-header">
+    <h1>⚙️ Classroom Browser — Teacher</h1>
+    <p>Edit the approved site list, change the PIN, and export the config for your students.</p>
+  </div>
+
+  <div class="action-bar">
+    <button class="btn btn-success" id="exportBtn">⬇ Export Config</button>
+    <button class="btn btn-danger" id="resetBtn">↺ Reset to Default</button>
+    <button class="btn btn-secondary" id="changePinBtn">🔑 Change PIN</button>
+    <a href="../student/" class="btn btn-secondary" style="text-decoration:none">🖥️ Preview Student View</a>
+  </div>
+
+  <div id="siteList" class="site-list"></div>
+
+  <div class="add-form">
+    <strong style="font-size:0.9rem">Add a new site</strong>
+    <div class="row">
+      <input id="addIcon" type="text" maxlength="2" placeholder="Icon" style="width:60px;flex:none" />
+      <input id="addName" type="text" placeholder="Site name" />
+      <input id="addUrl" type="text" placeholder="URL (https://...)" />
+    </div>
+    <div class="row">
+      <input id="addEmbed" type="text" placeholder="Embed URL template (optional, use {path} or {id})" />
+    </div>
+    <button class="btn btn-primary" id="addBtn" style="align-self:flex-start">+ Add Site</button>
+  </div>
+</main>
+
+<div class="toast" id="toast"></div>
+
+<script src="../crypto.js"></script>
+<script src="teacher.js"></script>
+</body>
+</html>

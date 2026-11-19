@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Classroom Browser</title>
+<link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+
+<div class="student-home" id="studentHome">
+  <div>
+    <h1>🖥️ Classroom Browser</h1>
+    <p class="sub">Pick a site below to start browsing. You can only visit approved websites.</p>
+  </div>
+  <div id="tiles" class="tiles"></div>
+  <button id="startBtn" class="start-btn">▶ Enter Full-Screen Mode</button>
+</div>
+
+<div class="kiosk-screen" id="kiosk">
+  <div class="kiosk-bar">
+    <button id="backBtn">← Sites</button>
+    <span class="kiosk-site-name" id="siteName"></span>
+    <button id="reloadBtn">⟳ Reload</button>
+    <button id="exitBtn">🔒 Exit</button>
+  </div>
+  <div class="kiosk-frame-wrap">
+    <iframe id="frame" sandbox="allow-scripts allow-forms allow-popups" referrerpolicy="no-referrer"></iframe>
+    <div class="kiosk-blocked" id="blocked">
+      <div class="big">🚫</div>
+      <div class="msg">That site isn't on the approved list.</div>
+      <small>Ask your teacher if you need access to something else.</small>
+      <button onclick="goHome()" style="padding:.6rem 1.2rem;border:none;border-radius:8px;cursor:pointer;font-weight:600;background:var(--accent);color:#04283a">Back to sites</button>
+    </div>
+  </div>
+</div>
+
+<div class="pin-overlay hidden" id="pinOverlay">
+  <div class="pin-box">
+    <h2>Enter teacher PIN to exit</h2>
+    <input id="pinInput" type="password" inputmode="numeric" autocomplete="off" maxlength="12" placeholder="PIN" />
+    <div id="pinMsg" class="pin-msg"></div>
+    <div class="pin-row">
+      <button class="btn btn-secondary" onclick="closePin()">Cancel</button>
+      <button class="btn btn-primary" id="unlockBtn">Unlock</button>
+    </div>
+  </div>
+</div>
+
+<script src="../crypto.js"></script>
+<script src="config.js"></script>
+<script src="student.js"></script>
+</body>
+</html>
